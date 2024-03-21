@@ -104,10 +104,8 @@ function view1({ year, htmlContent }) {
     {/* Row 2: Split into two columns */}
     <Grid item container spacing={2} style={{ height: "50vh" }}>
       {/* Left Column: BrazilMap */}
-      <Grid item xs={6} style={{
-        height: "100%",
-      }}>
-        <BrazilMap htmlContent={htmlContent} />
+      <Grid item xs={6} style={{ height: "100%" }}>
+        <BrazilMap year={year} />
       </Grid>
 
       {/* Right Column: Card containing ReactEcharts */}
@@ -130,6 +128,7 @@ function view1({ year, htmlContent }) {
       </Grid>
     </Grid>
   </Grid>
+
 );
 
 

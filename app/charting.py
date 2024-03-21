@@ -13,6 +13,7 @@ GEE_PROJECT = os.environ.get('GEE_PROJECT')
 
 def init_ee():
     ee.Authenticate()
+    print(GEE_PROJECT)
     ee.Initialize(project=GEE_PROJECT)
 
 

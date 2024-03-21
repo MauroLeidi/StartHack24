@@ -162,7 +162,7 @@ return (
 
       {/* Dynamic View Content */}
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
-        {view === 1 || view === 2 ? <View1 year={year} htmlcontent={htmlContent} /> : <View2 />}
+        {view === 1 || view === 2 ? <View1 year={year}/> : <View2 />}
       </div>
     </div>
   </div>

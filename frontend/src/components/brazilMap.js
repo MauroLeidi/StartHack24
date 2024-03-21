@@ -1,26 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import ClipLoader from 'react-spinners/ClipLoader'; // Import the spinner you want to use
 
-const brazilMap = ({ htmlContent }) => {
+const BrazilMap = ({ year }) => {
+  const [htmlContent, setHtmlContent] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLandcoverHtml = async () => {
+      setIsLoading(true);
+      const payload = {
+        layers: ['biomes', 'landcover_' + year, 'burn_' + year],
+      };
+
+      try {
+        const response = await fetch('http://localhost:8000/landcover', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          const html = await response.text();
+          setHtmlContent(html);
+          setIsLoading(false);
+        } else {
+          console.error('Failed to fetch HTML');
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error('Error fetching HTML:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchLandcoverHtml();
+  }, [year]);
+
   return (
     <div
-      dangerouslySetInnerHTML={{ __html: htmlContent }}
       style={{
-        padding: "20px",
-        backgroundColor: "#fff", // Adjust the background color as needed
-        borderRadius: "20px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Adds a subtle shadow
-        margin: "20px", // Adds some margin around the card
-        maxWidth: "calc(100% - 40px)", // Ensures padding is accounted for in full width
-        boxSizing: "border-box", // Includes padding and borders in total width and height
-        height: "50vh", // Sets the height of the div to 50% of the viewport height
-        width: "100%", // Ensure the width takes up all available space within its parent
-        display: "flex", // Makes the div a flex container
-        justifyContent: "center", // Centers child content horizontally
-        alignItems: "center", // Centers child content vertically
-        overflow: "auto", // Adds scrollbars if the content overflows the fixed height
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#fff',
+        borderRadius: '20px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        padding: '20px',
+        margin: '20px',
+        boxSizing: 'border-box',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
-    />
+    >
+      {isLoading ? (
+        <ClipLoader color="#007bff" size={150} /> // Use the ClipLoader spinner
+      ) : (
+        <div dangerouslySetInnerHTML={{ __html: htmlContent }} style={{ width: '100%', height: '100%' }} />
+      )}
+    </div>
   );
 };
 
-export default brazilMap;
+export default BrazilMap;
