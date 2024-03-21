@@ -75,8 +75,9 @@ def get_chart_by_layers(layers: List[str]):
             lc = lc.clip(brazil_shapefile)
             layer_name = 'Population'
         elif layer.startswith(f'burn'):
-            # year = layer.split("_")[1]
-            dataset = ee.ImageCollection('MODIS/061/MCD64A1').filter(ee.Filter.date('2017-01-01', '2018-05-01'))
+            year = layer.split("_")[1]
+            year_range = (f"{year}-01-01", f"{year}-12-31")
+            dataset = ee.ImageCollection('MODIS/061/MCD64A1').filter(ee.Filter.date(year_range[0], year_range[1]))
             burnedArea = dataset.select('BurnDate')
             fc = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017').filter(
                 'country_na == "Brazil"'
@@ -94,9 +95,9 @@ def get_chart_by_layers(layers: List[str]):
                 "fillColor": "0000ff60",  # Interior color with opacity (60 at the end represents opacity in hex)
                 "width": 2,  # Outline width
             }
-            brazil_shapefile = brazil_shapefile.style(**style)  # Apply the style
+            lc = brazil_shapefile.style(**style)
+            igb = {}
             layer_name = "Brazil"
-            brazil_map.add_ee_layer(brazil_shapefile, {}, layer_name)
         elif layer.startswith("biomes"):
             lc = geemap.shp_to_ee('../data/Brazil Biomes/Brazil_biomes.shp')
             style = {
@@ -106,6 +107,7 @@ def get_chart_by_layers(layers: List[str]):
             }
             lc = lc.style(**style)  # Apply the style
             layer_name = "Biomes"
-            brazil_map.add_ee_layer(lc, {}, layer_name)
+            igb = {}
+        brazil_map.add_ee_layer(lc, igb, layer_name)
     brazil_map.add_child(folium.LayerControl())
     return brazil_map._repr_html_()
