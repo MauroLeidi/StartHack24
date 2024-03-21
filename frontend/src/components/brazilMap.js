@@ -39,32 +39,34 @@ const BrazilMap = ({ year, layers }) => {
   }, [year]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#fff",
-        borderRadius: "20px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        padding: "20px",
-        margin: "20px",
-        boxSizing: "border-box",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      {isLoading ? (
-        <ClipLoader color="#007bff" size={150} /> // Use the ClipLoader spinner
-      ) : (
-        <div
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
-          style={{ width: "100%", height: "100%" }}
-        />
-      )}
-    </div>
-  );
+  <div
+    style={{
+      position: "relative",
+      width: "100%", // Ensure this fills its parent
+      height: "100%", // Ensure this fills its parent
+      backgroundColor: "#fff",
+      boxSizing: "border-box",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      overflow: "hidden", // Add this to hide overflow
+    }}
+  >
+    {isLoading ? (
+      <ClipLoader color="#007bff" size={150} /> // Use the ClipLoader spinner
+    ) : (
+      <div
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+        style={{
+          width: "100%",
+          height: "100%",
+          overflow: "hidden",
+        }}
+      />
+    )}
+  </div>
+)
+
 };
 
 export default BrazilMap;
