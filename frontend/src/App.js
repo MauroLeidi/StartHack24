@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
+import logo from "./logo.svg"; // Make sure your logo is correctly imported
 import "./App.css";
-import { Grid, Card, Box, Button, ButtonGroup, Slider } from "@mui/material";
+import { Card, Box, Slider } from "@mui/material";
 import View1 from "./components/view1";
 import View2 from "./components/view2";
 
@@ -15,70 +15,113 @@ function App() {
   }
 
   useEffect(() => {
-    // Define the function that fetches the HTML
-    const fetchLandcoverHtml = async () => {
-      // Your payload, adjust the years as needed
-      const payload = {
-        layers: ["biomes"], // Example years
-      };
-
-      // Fetch the HTML from the FastAPI endpoint
-      try {
-        const response = await fetch("http://localhost:8000/landcover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (response.ok) {
-          const html = await response.text();
-          setHtmlContent(html);
-        } else {
-          console.error("Failed to fetch HTML");
-        }
-      } catch (error) {
-        console.error("Error fetching HTML:", error);
-      }
+  // Define the function that fetches the HTML
+  const fetchLandcoverHtml = async () => {
+    // Your payload, adjust the years as needed
+    const payload = {
+      layers: ["biomes"], // Example years
     };
 
-    // Call the function
-    fetchLandcoverHtml();
-  }, []); // Empty dependency array means this effect runs only once after the initial render
+    // Fetch the HTML from the FastAPI endpoint
+    try {
+      const response = await fetch("http://localhost:8000/landcover", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        const html = await response.text();
+        setHtmlContent(html);
+      } else {
+        console.error("Failed to fetch HTML");
+      }
+    } catch (error) {
+      console.error("Error fetching HTML:", error);
+    }
+  };
+
+  // Call the function
+  fetchLandcoverHtml();
+}, []); // Empty dependency array means this effect runs only once after the initial render
+
+
+  const MenuItem = ({ viewId, children }) => (
+    <div
+      onClick={() => setView(viewId)}
+      style={{
+        width: '90%',
+        cursor: 'pointer',
+        padding: '10px 0',
+        margin: '10px auto',
+        backgroundColor: view === viewId ? '#f0f0f0' : 'transparent',
+        textAlign: 'center',
+        borderRadius: '5px',
+        transition: 'background-color 0.3s',
+      }}
+    >
+      {children}
+    </div>
+  );
 
   return (
-    <div className="App">
-      <Grid container sx={{ p: 2 }} spacing={2}>
-        <Grid item xs={2}>
-          <ButtonGroup
-            orientation="vertical"
-            aria-label="Vertical button group"
-            variant="contained"
-            style={{ height: "100%", width: "100%" }}
-          >
-            <Button onClick={() => setView(1)}>nav 1</Button>
-            <Button onClick={() => setView(2)}>nav 2</Button>
-            <Button onClick={() => setView(3)}>nav 3</Button>
-            <Button onClick={() => setView(4)}>nav 4</Button>
-          </ButtonGroup>
-        </Grid>
-        <Grid item xs={7}>
-          {/* Dangerously set inner HTML */}
-          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-          <Slider
-            defaultValue={2010}
-            step={1}
-            min={2010}
-            max={2020}
-            marks={marks}
-            valueLabelDisplay="auto"
-          ></Slider>
-        </Grid>
-        <Grid item xs={3}>
-          {view === 1 || view === 2 ? <View1 /> : <View2 />}
-        </Grid>
-      </Grid>
+    <div className="App" style={{ display: 'flex', minHeight: '100vh', boxSizing: 'border-box', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '20px' }}>
+      {/* Navigation Card on the Left */}
+      <Card elevation={3} style={{ width: '250px', marginRight: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '20px' }}>
+        {/* Logo Placeholder */}
+        <Box
+          sx={{
+            width: '100%',
+            height: 120,
+            backgroundImage: `url(${logo})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            marginBottom: '20px',
+          }}
+        />
+
+        {/* Menu Items */}
+        <MenuItem viewId={1}>Overview</MenuItem>
+        <hr style={{ width: '80%', border: '0.5px solid #e0e0e0' }} />
+        <MenuItem viewId={2}>Fire Impact</MenuItem>
+        <hr style={{ width: '80%', border: '0.5px solid #e0e0e0' }} />
+        <MenuItem viewId={3}>Blabla</MenuItem>
+        <hr style={{ width: '80%', border: '0.5px solid #e0e0e0' }} />
+        <MenuItem viewId={4}>Blabla</MenuItem>
+      </Card>
+
+        <div style={{flexGrow: 1}}>
+            <div
+                dangerouslySetInnerHTML={{__html: htmlContent}}
+                style={{
+                    padding: '20px',
+                    backgroundColor: '#fff', // Adjust the background color as needed
+                    borderRadius: '20px',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Adds a subtle shadow
+                    margin: '20px', // Adds some margin around the card
+                    maxWidth: 'calc(100% - 40px)', // Ensures padding is accounted for in full width
+                    boxSizing: 'border-box', // Includes padding and borders in total width and height
+                    height: '50vh', // Sets the height of the div to 50% of the viewport height
+                    width: '100%', // Ensure the width takes up all available space within its parent
+                    display: 'flex', // Makes the div a flex container
+                    justifyContent: 'center', // Centers child content horizontally
+                    alignItems: 'center', // Centers child content vertically
+                    overflow: 'auto' // Adds scrollbars if the content overflows the fixed height
+                }}
+            />
+            <Slider
+                defaultValue={2010}
+                step={1}
+                min={2010}
+                max={2020}
+                marks={marks}
+                valueLabelDisplay="auto"
+            />
+            {view === 1 || view === 2 ? <View1/> : <View2/>}
+        </div>
     </div>
   );
 }
