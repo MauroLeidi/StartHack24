@@ -1,0 +1,17 @@
+{
+  "Evergreen Needleleaf Forest": 205,
+  "Grasslands": 50,
+  "Permanent Wetlands": 150,
+  "Croplands": 100,
+  "Urban and Built-up": 20,
+  "Cropland/Natural Vegetation Mosaic": 100,
+  "Barren or Sparsely Vegetated": 10,
+  "Unknown Land Cover Type": 50,
+  "Evergreen Broadleaf Forest": 205,
+  "Deciduous Broadleaf Forest": 205,
+  "Mixed Forest": 205,
+  "Closed Shrublands": 15,
+  "Open Shrublands": 15,
+  "Woody Savannas": 15,
+  "Savannas": 15
+}
