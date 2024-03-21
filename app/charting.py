@@ -113,15 +113,18 @@ def get_chart_by_layers(layers: List[str]):
             year = layer.split("_")[1]
             lc = ee.Image(f'MODIS/006/MCD12Q1/{year}_01_01').select('LC_Type1')
             lc = lc.clip(brazil_shapefile)
-            lc = lc.eq(13)
+            category_mask = lc.eq(13)
+            # Apply the mask to the landcover image
+            lc = lc.updateMask(category_mask)
             igb = {
                 'min': 1.0,
                 'max': 1.0,  # Since we're only visualizing one class, min and max can both be set to 1.
-                'palette': ['a5a5a5'],  # Urban and Built-up color (assuming grey here, replace with the desired color).
+                'palette': ['ffc0cb'],  # Urban and Built-up color (assuming grey here, replace with the desired color).
             }
 
             # Add the layer to the map. Since we're only visualizing one class, the name doesn't need a year.
             layer_name = f"Urban and Built-up Land Cover {year}"
+            brazil_map = folium.Map(location=[-21.1767, -47.8208], zoom_start=10, height=500)
 
         brazil_map.add_ee_layer(lc, igb, layer_name)
     brazil_map.add_child(folium.LayerControl())

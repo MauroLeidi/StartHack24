@@ -1,9 +1,21 @@
-import React from "react";
-import { Card, CardMedia, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { Card, Grid, Slider } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
 import landCoverBurnedAreaStats from "../data/land_cover_burned_area_stats.json";
 
-function view3({ year, htmlContent }) {
+function View3() {
+  const [year, setYear] = useState(2010);
+
+  // Year Slider marks
+  const marks = [];
+  for (let year = 2010; year <= 2020; year++) {
+    marks.push({ value: year, label: `${year}` });
+  }
+
+  // Handle year change for the slider
+  const handleYearChange = (event, newValue) => {
+    setYear(newValue);
+  };
   const wrapLabel = (label, n) => {
     var words = label.split(" ");
     var wrappedText = words.reduce((result, word, i) => {
@@ -89,4 +101,4 @@ function view3({ year, htmlContent }) {
   );
 }
 
-export default view3;
+export default View3;

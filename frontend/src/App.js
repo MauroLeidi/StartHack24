@@ -12,15 +12,6 @@ function App() {
   const [view, setView] = useState(1);
   const [year, setYear] = useState(2010);
 
-  const marks = [];
-  for (let year = 2010; year <= 2020; year++) {
-    marks.push({ value: year, label: `${year}` });
-  }
-
-  const handleYearChange = (event, newValue) => {
-    setYear(newValue);
-  };
-
   useEffect(() => {
     // Define the function that fetches the HTML
     const fetchLandcoverHtml = async () => {
@@ -119,69 +110,17 @@ function App() {
         <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
         <MenuItem viewId={4}>Infrastructural analysis</MenuItem>
       </Card>
-
-      {/* Main Content Area */}
-      <div style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
-        {/* Card for Title and Subtitle */}
-        <Card
-          elevation={3}
-          style={{
-            marginBottom: "10px",
-            paddingLeft: "30px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            borderRadius: "20px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-            }}
-          >
-            <span>Current Title</span>
-            <spanp>Subtitle</spanp>
-          </div>
-        </Card>
-
-        {/* Card for Year Selector */}
-        <Card
-          elevation={3}
-          style={{
-            marginBottom: "20px",
-            paddingLeft: "30px",
-            paddingRight: "30px",
-            paddingTop: "20px",
-            paddingBottom: "20px",
-            borderRadius: "20px",
-          }}
-        >
-          <Slider
-            defaultValue={2010}
-            step={1}
-            min={2010}
-            max={2020}
-            marks={marks}
-            valueLabelDisplay="auto"
-            onChange={handleYearChange}
-          />
-        </Card>
-
-        {/* Dynamic View Content */}
-        <div style={{ flexGrow: 1, overflowY: "auto" }}>
-          {
-            view === 1 ? (
-              <View1 year={year} htmlcontent={htmlContent} />
-            ) : view === 2 ? (
-              <View2 />
-            ) : view === 3 ? (
-              <View3 year={year} htmlcontent={htmlContent} />
-            ) : view == 4 ? (
-              <View4 year={year} htmlcontent={htmlContent} />
-            ) : null // or some default content
-          }
-        </div>
+      {/* Dynamic View Content */}
+      <div style={{ flexGrow: 1, overflowY: "auto" }}>
+        {view === 1 ? (
+          <View1 />
+        ) : view === 2 ? (
+          <View2 />
+        ) : view === 3 ? (
+          <View3 />
+        ) : view == 4 ? (
+          <View4 />
+        ) : null}
       </div>
     </div>
   );

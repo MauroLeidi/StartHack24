@@ -1,10 +1,22 @@
-import React from "react";
-import { Card, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { Card, Grid, Slider } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
 import landCoverBurnedAreaStats from "../data/land_cover_burned_area_stats.json";
 import BrazilMap from "./brazilMap";
 
-function view4({ year, htmlContent }) {
+function View4() {
+  const [year, setYear] = useState(2010);
+
+  // Year Slider marks
+  const marks = [];
+  for (let year = 2010; year <= 2020; year++) {
+    marks.push({ value: year, label: `${year}` });
+  }
+
+  // Handle year change for the slider
+  const handleYearChange = (event, newValue) => {
+    setYear(newValue);
+  };
   // Assuming "Urban and Built-up" is the exact name in your data
   const urbanData = Object.values(landCoverBurnedAreaStats[year]).find(
     (lc_ba_stat) => lc_ba_stat.name === "Urban and Built-up"
@@ -76,11 +88,36 @@ function view4({ year, htmlContent }) {
       >
         <h2>Placeholder</h2>
       </Grid>
+      <Grid item style={{ padding: "20px" }}>
+        <Card
+          elevation={3}
+          style={{
+            paddingLeft: "30px",
+            paddingRight: "30px",
+            paddingTop: "20px",
+            paddingBottom: "20px",
+            borderRadius: "20px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Slider
+            value={year}
+            onChange={handleYearChange}
+            defaultValue={2010}
+            step={1}
+            min={2010}
+            max={2020}
+            marks={marks}
+            valueLabelDisplay="auto"
+          />
+        </Card>
+      </Grid>
 
       {/* BrazilMap and ReactEcharts display */}
       <Grid item container spacing={2} style={{ height: "50vh" }}>
         <Grid item xs={6} style={{ height: "100%" }}>
-          <BrazilMap year={year} />
+          <BrazilMap year={year} layers={["urban_" + year, "burn_" + year]} />
         </Grid>
         <Grid item xs={6} style={{ height: "100%" }}>
           <Card
@@ -106,4 +143,4 @@ function view4({ year, htmlContent }) {
   );
 }
 
-export default view4;
+export default View4;
