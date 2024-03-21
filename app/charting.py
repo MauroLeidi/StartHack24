@@ -11,6 +11,53 @@ load_dotenv("./.env")
 
 GEE_PROJECT = os.environ.get('GEE_PROJECT')
 
+
+LANDCOVER_TYPE_TO_IDX = {
+'Water': 0,
+ 'Evergreen Needleleaf Forest': 1,
+ 'Evergreen Broadleaf Forest': 2,
+ 'Deciduous Needleleaf Forest': 3,
+ 'Deciduous Broadleaf Forest': 4,
+ 'Mixed Forest': 5,
+ 'Closed Shrublands': 6,
+ 'Open Shrublands': 7,
+ 'Woody Savannas': 8,
+ 'Savannas': 9,
+ 'Grasslands': 10,
+ 'Permanent Wetlands': 11,
+ 'Croplands': 12,
+ 'Urban and Built-up': 13,
+ 'Cropland/Natural Vegetation Mosaic': 14,
+ 'Snow and Ice': 15,
+ 'Barren or Sparsely Vegetated': 16,
+ 'Unclassified': 254
+}
+
+colors = ['05450a', '086a10', '54a708', '78d203', '009900', 'c6b044',
+                    'dcd159', 'dade48', 'fbff13', 'b6ff05', '27ff87', 'c24f44',
+                    'a5a5a5', 'ff6d4c', '69fff8', 'f9ffa4', '1c0dff']
+
+LANDCOVER_TYPE_TO_COLOR = {
+ 'Evergreen Needleleaf Forest': "#05450a",
+ 'Evergreen Broadleaf Forest': "#086a10",
+ 'Deciduous Needleleaf Forest': "#54a708",
+ 'Deciduous Broadleaf Forest': "#78d203",
+ 'Mixed Forest': "#009900",
+ 'Closed Shrublands': "#c6b044",
+ 'Open Shrublands': "#dcd159",
+ 'Woody Savannas': "#dade48",
+ 'Savannas': "#fbff13",
+ 'Grasslands': "#b6ff05",
+ 'Permanent Wetlands': "#27ff87",
+ 'Croplands': "#c24f44",
+ 'Urban and Built-up': "#a5a5a5",
+ 'Cropland/Natural Vegetation Mosaic': "#ff6d4c",
+ 'Snow and Ice': "#69fff8",
+ 'Barren or Sparsely Vegetated': "#f9ffa4",
+ 'Unclassified': "#1c0dff"
+}
+
+
 def init_ee():
     ee.Authenticate()
     print(GEE_PROJECT)
@@ -49,7 +96,18 @@ def get_chart_by_layers(layers: List[str]):
     brazil_shapefile = geemap.shp_to_ee('../data/Brazil/Brazil.shp')
     brazil_map = folium.Map(location=[-9.26, -55.4], zoom_start=4)
     for layer in layers:
-        if layer.startswith("landcover"):
+        if layer.startswith("landcover_only"):
+            landcover_type = layer.split("_")[2]
+            year = layer.split("_")[3]
+            lc = ee.Image(f'MODIS/006/MCD12Q1/{year}_01_01').select('LC_Type1')
+            lc = lc.clip(brazil_shapefile)
+            category_mask = lc.eq(LANDCOVER_TYPE_TO_IDX[landcover_type])
+            lc = lc.updateMask(category_mask)
+            igb = {
+                'palette': [LANDCOVER_TYPE_TO_COLOR[landcover_type]]
+            }
+            layer_name = landcover_type
+        elif layer.startswith("landcover"):
             year = layer.split("_")[1]
             lc = ee.Image(f'MODIS/006/MCD12Q1/{year}_01_01').select('LC_Type1')
             lc = lc.clip(brazil_shapefile)
@@ -114,7 +172,6 @@ def get_chart_by_layers(layers: List[str]):
             lc = ee.Image(f'MODIS/006/MCD12Q1/{year}_01_01').select('LC_Type1')
             lc = lc.clip(brazil_shapefile)
             category_mask = lc.eq(13)
-            # Apply the mask to the landcover image
             lc = lc.updateMask(category_mask)
             igb = {
                 'min': 1.0,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg"; // Make sure your logo is correctly imported
+import logo from "./assets/logo.png"; // Make sure your logo is correctly imported
 import "./App.css";
 import { Card, Box, Slider } from "@mui/material";
 import View1 from "./components/view1";
@@ -80,6 +80,7 @@ function App() {
   elevation={3}
   style={{
     width: "250px",
+      minWidth: "250px",
     marginRight: "20px",
     display: "flex",
     flexDirection: "column",
@@ -91,7 +92,7 @@ function App() {
   <Box
     sx={{
       width: "100%",
-      height: 120,
+      height: 150,
       backgroundImage: `url(${logo})`,
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",
