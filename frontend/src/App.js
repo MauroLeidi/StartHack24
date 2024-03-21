@@ -8,11 +8,16 @@ import View2 from "./components/view2";
 function App() {
   const [htmlContent, setHtmlContent] = useState("");
   const [view, setView] = useState(1);
+  const [year, setYear] = useState(2010);
 
   const marks = [];
-  for (let year = 2002; year <= 2020; year++) {
+  for (let year = 2010; year <= 2020; year++) {
     marks.push({ value: year, label: `${year}` });
   }
+
+  const handleYearChange = (event, newValue) => {
+    setYear(newValue);
+  };
 
   useEffect(() => {
     // Define the function that fetches the HTML
@@ -73,10 +78,11 @@ function App() {
             max={2020}
             marks={marks}
             valueLabelDisplay="auto"
+            onChange={handleYearChange}
           ></Slider>
         </Grid>
         <Grid item xs={3}>
-          {view === 1 || view === 2 ? <View1 /> : <View2 />}
+          {view === 1 || view === 2 ? <View1 year={year} /> : <View2 />}
         </Grid>
       </Grid>
     </div>
