@@ -73,7 +73,6 @@ function App() {
         boxSizing: "border-box",
         paddingTop: "20px",
         paddingBottom: "20px",
-        paddingLeft: "20px",
       }}
     >
       {/* Navigation Card on the Left */}
@@ -85,7 +84,8 @@ function App() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          borderRadius: "20px",
+          borderRadius: "0px",
+            boxShadow: "0 0 0 0"
         }}
       >
         {/* Logo Placeholder */}

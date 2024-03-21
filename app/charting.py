@@ -47,7 +47,7 @@ folium.Map.add_ee_layer = add_ee_layer
 def get_chart_by_layers(layers: List[str]):
     init_ee()
     brazil_shapefile = geemap.shp_to_ee('../data/Brazil/Brazil.shp')
-    brazil_map = folium.Map(location=[-14.5, -51], zoom_start=4, height=500)
+    brazil_map = folium.Map(location=[-9.26, -55.4], zoom_start=4)
     for layer in layers:
         if layer.startswith("landcover"):
             year = layer.split("_")[1]
@@ -125,7 +125,6 @@ def get_chart_by_layers(layers: List[str]):
             # Add the layer to the map. Since we're only visualizing one class, the name doesn't need a year.
             layer_name = f"Urban and Built-up Land Cover {year}"
             brazil_map = folium.Map(location=[-21.1767, -47.8208], zoom_start=10, height=500)
-
         brazil_map.add_ee_layer(lc, igb, layer_name)
     brazil_map.add_child(folium.LayerControl())
     return brazil_map._repr_html_()
