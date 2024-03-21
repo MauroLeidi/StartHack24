@@ -1,0 +1,10 @@
+name: starthack
+channels:
+  - defaults
+dependencies:
+  - pip
+  - flask
+  - flask_cors
+  - pip:
+      - geemap
+      - PyCRS
