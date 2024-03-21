@@ -3,10 +3,17 @@ import geemap
 import folium
 import geemap.foliumap as geemap
 from typing import List
+# load env variables with dotenv
+import os
+from dotenv import load_dotenv
+load_dotenv("./.env")
+
+
+GEE_PROJECT = os.environ.get('GEE_PROJECT')
 
 def init_ee():
     ee.Authenticate()
-    ee.Initialize(project='ee-jgetzner')
+    ee.Initialize(project=GEE_PROJECT)
 
 
 def add_ee_layer(self, ee_object, vis_params, name):
