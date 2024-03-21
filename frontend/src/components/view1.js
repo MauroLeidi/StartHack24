@@ -51,7 +51,7 @@ function view1({ year }) {
     return {
       grid: {
         // Added grid property
-        left: 80, // provides 100 pixels of space from the bottom.
+        left: 50, // provides 100 pixels of space from the bottom.
       },
       title: {
         text: "Burned Area % by Land Cover",
