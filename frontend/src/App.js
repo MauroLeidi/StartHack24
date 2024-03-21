@@ -117,9 +117,9 @@ function App() {
 
   {/* Menu Items as Sub-Entries */}
   <MenuItem viewId={1}>Overview</MenuItem>
-  <MenuItem viewId={2}>Fire Impact</MenuItem>
-  <MenuItem viewId={3}>Blabla</MenuItem>
-  <MenuItem viewId={4}>Infrastructural analysis</MenuItem>
+  <MenuItem viewId={2}>Impact per Landcover</MenuItem>
+  <MenuItem viewId={3}>CO2 Emissions</MenuItem>
+  <MenuItem viewId={4}>Impact on Society</MenuItem>
 </Card>
       {/* Dynamic View Content */}
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
