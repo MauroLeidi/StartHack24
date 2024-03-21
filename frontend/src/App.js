@@ -52,10 +52,10 @@ function App() {
       style={{
         width: "90%",
         cursor: "pointer",
-        padding: "10px 0",
+        padding: "10px 10px 10px 30px ",
         margin: "10px auto",
         backgroundColor: view === viewId ? "#f0f0f0" : "transparent",
-        textAlign: "center",
+        textAlign: "left",
         borderRadius: "5px",
         transition: "background-color 0.3s",
       }}
@@ -77,39 +77,49 @@ function App() {
     >
       {/* Navigation Card on the Left */}
       <Card
-        elevation={3}
-        style={{
-          width: "250px",
-          marginRight: "20px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          borderRadius: "0px",
-            boxShadow: "0 0 0 0"
-        }}
-      >
-        {/* Logo Placeholder */}
-        <Box
-          sx={{
-            width: "100%",
-            height: 120,
-            backgroundImage: `url(${logo})`,
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            marginBottom: "20px",
-          }}
-        />
+  elevation={3}
+  style={{
+    width: "250px",
+    marginRight: "20px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    borderRadius: "5px",
+  }}
+>
+  {/* Logo Placeholder */}
+  <Box
+    sx={{
+      width: "100%",
+      height: 120,
+      backgroundImage: `url(${logo})`,
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      marginBottom: "20px",
+    }}
+  />
 
-        {/* Menu Items */}
-        <MenuItem viewId={1}>Overview</MenuItem>
-        <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
-        <MenuItem viewId={2}>Fire Impact</MenuItem>
-        <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
-        <MenuItem viewId={3}>Blabla</MenuItem>
-        <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
-        <MenuItem viewId={4}>Infrastructural analysis</MenuItem>
-      </Card>
+  {/* Dashboards Heading */}
+  <div
+    style={{
+      width: "90%",
+      padding: "10px 0 0 10px",
+      margin: "10px auto",
+      textAlign: "left",
+      fontWeight: "bold",
+      fontSize: "22px",
+    }}
+  >
+    Dashboards
+  </div>
+
+  {/* Menu Items as Sub-Entries */}
+  <MenuItem viewId={1}>Overview</MenuItem>
+  <MenuItem viewId={2}>Fire Impact</MenuItem>
+  <MenuItem viewId={3}>Blabla</MenuItem>
+  <MenuItem viewId={4}>Infrastructural analysis</MenuItem>
+</Card>
       {/* Dynamic View Content */}
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
         {view === 1 ? (

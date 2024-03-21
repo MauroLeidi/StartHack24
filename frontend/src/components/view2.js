@@ -108,13 +108,13 @@ function View2() {
         <Grid container style={{ height: '100%' }} spacing={3}>
           {/* Top Left Card */}
           <Grid item xs={6}>
-            <Card style={{ height: '100%', backgroundColor: '#fff', padding: "20px", borderRadius: "20px", boxShadow: "0 0 0 0"  }}>
+            <Card style={{ height: '100%', backgroundColor: '#fff', padding: "20px", borderRadius: "5px", boxShadow: "0 0 0 0"  }}>
           {/* Bottom Cell Content */}
           <BrazilMap layers={["biomes", "landcover_" + year, "burning_" + year]} />
             </Card>
           </Grid>
           <Grid item xs={6}>
-           <Card style={{ height: '100%', backgroundColor: '#fff', padding: "20px", borderRadius: "20px", boxShadow: "0 0 0 0" }}>
+           <Card style={{ height: '100%', backgroundColor: '#fff', padding: "20px", borderRadius: "5px", boxShadow: "0 0 0 0" }}>
           <ReactEcharts
             option={getOption()}
             style={{ height: "100%", width: "100%" }}
@@ -124,7 +124,7 @@ function View2() {
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ height: '10%', marginTop: "40px"}}>
-        <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "20px", boxShadow: "0 0 0 0"  }}>
+        <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "5px", boxShadow: "0 0 0 0"  }}>
           <Slider
           value={year}
           onChange={handleYearChange}
