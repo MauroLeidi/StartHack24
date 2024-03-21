@@ -4,6 +4,7 @@ import "./App.css";
 import { Card, Box, Slider } from "@mui/material";
 import View1 from "./components/view1";
 import View2 from "./components/view2";
+import View3 from "./components/view3";
 
 function App() {
   const [htmlContent, setHtmlContent] = useState("");
@@ -39,7 +40,7 @@ function App() {
 
         if (response.ok) {
           const html = await response.text();
-          console.log(html)
+          console.log(html);
           setHtmlContent(html);
         } else {
           console.error("Failed to fetch HTML");
@@ -71,102 +72,115 @@ function App() {
     </div>
   );
 
-return (
-  <div
-    className="App"
-    style={{
-      display: "flex",
-      minHeight: "100vh",
-      boxSizing: "border-box",
-      paddingTop: "20px",
-      paddingBottom: "20px",
-      paddingLeft: "20px",
-    }}
-  >
-    {/* Navigation Card on the Left */}
-    <Card
-      elevation={3}
+  return (
+    <div
+      className="App"
       style={{
-        width: "250px",
-        marginRight: "20px",
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        borderRadius: "20px",
+        minHeight: "100vh",
+        boxSizing: "border-box",
+        paddingTop: "20px",
+        paddingBottom: "20px",
+        paddingLeft: "20px",
       }}
     >
-      {/* Logo Placeholder */}
-      <Box
-        sx={{
-          width: "100%",
-          height: 120,
-          backgroundImage: `url(${logo})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          marginBottom: "20px",
-        }}
-      />
-
-      {/* Menu Items */}
-      <MenuItem viewId={1}>Overview</MenuItem>
-      <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
-      <MenuItem viewId={2}>Fire Impact</MenuItem>
-      <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
-      <MenuItem viewId={3}>Blabla</MenuItem>
-      <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
-      <MenuItem viewId={4}>Blabla</MenuItem>
-    </Card>
-
-    {/* Main Content Area */}
-    <div style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
-      {/* Card for Title and Subtitle */}
+      {/* Navigation Card on the Left */}
       <Card
         elevation={3}
         style={{
-          marginBottom: "10px",
+          width: "250px",
+          marginRight: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          borderRadius: "20px",
+        }}
+      >
+        {/* Logo Placeholder */}
+        <Box
+          sx={{
+            width: "100%",
+            height: 120,
+            backgroundImage: `url(${logo})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            marginBottom: "20px",
+          }}
+        />
+
+        {/* Menu Items */}
+        <MenuItem viewId={1}>Overview</MenuItem>
+        <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
+        <MenuItem viewId={2}>Fire Impact</MenuItem>
+        <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
+        <MenuItem viewId={3}>Blabla</MenuItem>
+        <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
+        <MenuItem viewId={4}>Blabla</MenuItem>
+      </Card>
+
+      {/* Main Content Area */}
+      <div style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
+        {/* Card for Title and Subtitle */}
+        <Card
+          elevation={3}
+          style={{
+            marginBottom: "10px",
             paddingLeft: "30px",
             paddingTop: "10px",
             paddingBottom: "10px",
-          borderRadius: "20px",
-        }}
-      >
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-          <span>Current Title</span>
-          <spanp>Subtitle</spanp>
-        </div>
-      </Card>
+            borderRadius: "20px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+            }}
+          >
+            <span>Current Title</span>
+            <spanp>Subtitle</spanp>
+          </div>
+        </Card>
 
-      {/* Card for Year Selector */}
-      <Card
-        elevation={3}
-        style={{
-          marginBottom: "20px",
-          paddingLeft: "30px",
+        {/* Card for Year Selector */}
+        <Card
+          elevation={3}
+          style={{
+            marginBottom: "20px",
+            paddingLeft: "30px",
             paddingRight: "30px",
             paddingTop: "20px",
             paddingBottom: "20px",
-          borderRadius: "20px",
-        }}
-      >
-        <Slider
-          defaultValue={2010}
-          step={1}
-          min={2010}
-          max={2020}
-          marks={marks}
-          valueLabelDisplay="auto"
-          onChange={handleYearChange}
-        />
-      </Card>
+            borderRadius: "20px",
+          }}
+        >
+          <Slider
+            defaultValue={2010}
+            step={1}
+            min={2010}
+            max={2020}
+            marks={marks}
+            valueLabelDisplay="auto"
+            onChange={handleYearChange}
+          />
+        </Card>
 
-      {/* Dynamic View Content */}
-      <div style={{ flexGrow: 1, overflowY: "auto" }}>
-        {view === 1 || view === 2 ? <View1 year={year} htmlcontent={htmlContent} /> : <View2 />}
+        {/* Dynamic View Content */}
+        <div style={{ flexGrow: 1, overflowY: "auto" }}>
+          {
+            view === 1 ? (
+              <View1 year={year} htmlcontent={htmlContent} />
+            ) : view === 2 ? (
+              <View2 />
+            ) : view === 3 ? (
+              <View3 year={year} htmlcontent={htmlContent} />
+            ) : null // or some default content
+          }
+        </div>
       </div>
     </div>
-  </div>
-);
-
+  );
 }
 export default App;
