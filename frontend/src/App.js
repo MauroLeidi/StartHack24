@@ -24,7 +24,7 @@ function App() {
     const fetchLandcoverHtml = async () => {
       // Your payload, adjust the years as needed
       const payload = {
-        years: [2014, 2015], // Example years
+        layers: ["biomes"], // Example years
       };
 
       // Fetch the HTML from the FastAPI endpoint
