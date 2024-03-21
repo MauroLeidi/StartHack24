@@ -91,7 +91,7 @@ function view1({ year }) {
       <Grid item>
         <ReactEcharts
           option={getOption()}
-          style={{ height: "350px", width: "100%" }}
+          style={{ height: "500px", width: "100%" }}
           className="react_for_echarts"
         />
       </Grid>
