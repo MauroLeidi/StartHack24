@@ -6,7 +6,7 @@ from typing import List
 
 def init_ee():
     ee.Authenticate()
-    ee.Initialize(project='ee-jgetzner')
+    ee.Initialize(project='inspect-417821')
 
 
 def add_ee_layer(self, ee_object, vis_params, name):
