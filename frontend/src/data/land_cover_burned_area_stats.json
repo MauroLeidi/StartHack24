@@ -1,4 +1,692 @@
 {
+  "2001": {
+    "1": {
+      "burned_hectars": 125,
+      "total_land_cover_hectares": 18738.72549019608,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 4212433.333333333,
+      "total_land_cover_hectares": 173298887.6470588,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 30760.196078431374,
+      "total_land_cover_hectares": 5665077.0588235315,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 779630.7843137255,
+      "total_land_cover_hectares": 22025508.039215684,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 3563.529411764706,
+      "total_land_cover_hectares": 3955172.843137251,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 45425,
+      "total_land_cover_hectares": 7990559.4117647065,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 275,
+      "total_land_cover_hectares": 310160.19607843144,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 28645.0,
+      "total_land_cover_hectares": 7853852.647058821,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 535016.4705882354,
+      "total_land_cover_hectares": 374035331.4705882,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 297605.9803921568,
+      "total_land_cover_hectares": 5508476.470588235,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 37537.8431372549,
+      "total_land_cover_hectares": 501818.23529411765,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 5675,
+      "total_land_cover_hectares": 4962412.156862745,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 3100,
+      "total_land_cover_hectares": 659982.0588235294,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 640429.8039215686,
+      "total_land_cover_hectares": 35051940.09803921,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 8244673.823529412,
+      "total_land_cover_hectares": 208459641.07843137,
+      "name": "Savannas"
+    }
+  },
+  "2002": {
+    "1": {
+      "burned_hectars": 350,
+      "total_land_cover_hectares": 20406.56862745098,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 6438296.470588235,
+      "total_land_cover_hectares": 174045303.03921565,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 64690.588235294126,
+      "total_land_cover_hectares": 5580912.0588235315,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1137928.137254902,
+      "total_land_cover_hectares": 22455874.411764707,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 9438.529411764706,
+      "total_land_cover_hectares": 3955867.549019604,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 73050,
+      "total_land_cover_hectares": 7957689.411764706,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 250,
+      "total_land_cover_hectares": 302006.86274509813,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 15728.725490196079,
+      "total_land_cover_hectares": 7949091.078431367,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 1724128.8235294116,
+      "total_land_cover_hectares": 372542006.86274505,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 413667.9411764706,
+      "total_land_cover_hectares": 5763612.745098039,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 47251.862745098035,
+      "total_land_cover_hectares": 524888.2352941177,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 7375,
+      "total_land_cover_hectares": 4946731.470588235,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 8525,
+      "total_land_cover_hectares": 617972.6470588235,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 984811.1764705882,
+      "total_land_cover_hectares": 35238059.01960785,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 12077486.862745099,
+      "total_land_cover_hectares": 208397161.1764706,
+      "name": "Savannas"
+    }
+  },
+  "2003": {
+    "1": {
+      "burned_hectars": 150,
+      "total_land_cover_hectares": 22174.901960784315,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 4767761.862745099,
+      "total_land_cover_hectares": 175606194.60784313,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 19111.764705882353,
+      "total_land_cover_hectares": 5517856.960784317,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1224963.3333333333,
+      "total_land_cover_hectares": 23200686.666666664,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 6200,
+      "total_land_cover_hectares": 3957034.2156862714,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 76897.74509803922,
+      "total_land_cover_hectares": 8016164.607843136,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 125,
+      "total_land_cover_hectares": 303132.45098039217,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 6507.352941176471,
+      "total_land_cover_hectares": 7991187.254901958,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 1585050.3921568631,
+      "total_land_cover_hectares": 369450995.6862745,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 341940.98039215687,
+      "total_land_cover_hectares": 6172959.117647058,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 39647.8431372549,
+      "total_land_cover_hectares": 560311.6666666666,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 12275,
+      "total_land_cover_hectares": 4981190.392156863,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 3600,
+      "total_land_cover_hectares": 587180.6862745098,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 764280.0980392155,
+      "total_land_cover_hectares": 35716793.137254894,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 7413670.686274509,
+      "total_land_cover_hectares": 208213745.7843137,
+      "name": "Savannas"
+    }
+  },
+  "2004": {
+    "1": {
+      "burned_hectars": 117.64705882352942,
+      "total_land_cover_hectares": 23999.411764705885,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 6330330.686274511,
+      "total_land_cover_hectares": 176472819.6078432,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 32085.39215686275,
+      "total_land_cover_hectares": 5506254.509803924,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1337514.3137254901,
+      "total_land_cover_hectares": 23562440.784313727,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 6700,
+      "total_land_cover_hectares": 3958159.2156862714,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 76050,
+      "total_land_cover_hectares": 8119639.509803921,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 75,
+      "total_land_cover_hectares": 287440.00000000006,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 9098.235294117647,
+      "total_land_cover_hectares": 8074998.823529412,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 1758408.7254901961,
+      "total_land_cover_hectares": 366622698.72549015,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 425097.8431372549,
+      "total_land_cover_hectares": 6981687.7450980395,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 53128.82352941176,
+      "total_land_cover_hectares": 601637.6470588235,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 6850,
+      "total_land_cover_hectares": 4904625,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 8175,
+      "total_land_cover_hectares": 548556.2745098039,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 819774.6078431373,
+      "total_land_cover_hectares": 36060907.15686274,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 9467345.784313727,
+      "total_land_cover_hectares": 208571743.7254902,
+      "name": "Savannas"
+    }
+  },
+  "2005": {
+    "1": {
+      "burned_hectars": 1190.8823529411764,
+      "total_land_cover_hectares": 25456.86274509804,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 5783579.215686275,
+      "total_land_cover_hectares": 177281499.41176468,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 32810.49019607843,
+      "total_land_cover_hectares": 5519692.549019611,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1197684.7058823528,
+      "total_land_cover_hectares": 24010659.31372549,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 6813.529411764706,
+      "total_land_cover_hectares": 3959705.196078428,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 82500,
+      "total_land_cover_hectares": 8191603.333333332,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 225,
+      "total_land_cover_hectares": 286517.64705882367,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 17266.176470588238,
+      "total_land_cover_hectares": 8124937.647058819,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 2209293.7254901957,
+      "total_land_cover_hectares": 363388129.31372553,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 534695.7843137254,
+      "total_land_cover_hectares": 7261830.490196079,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 59697.45098039216,
+      "total_land_cover_hectares": 607885.9803921569,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 8125,
+      "total_land_cover_hectares": 4927900,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 4575,
+      "total_land_cover_hectares": 530580.0980392157,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 1199366.2745098039,
+      "total_land_cover_hectares": 36818373.82352941,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 11165320.68627451,
+      "total_land_cover_hectares": 209362836.47058824,
+      "name": "Savannas"
+    }
+  },
+  "2006": {
+    "10": {
+      "burned_hectars": 4137439.3137254897,
+      "total_land_cover_hectares": 177502204.6078432,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 13071.862745098038,
+      "total_land_cover_hectares": 5577827.941176473,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1328959.9019607843,
+      "total_land_cover_hectares": 24590958.23529412,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 6150,
+      "total_land_cover_hectares": 3961352.0588235254,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 104900,
+      "total_land_cover_hectares": 8220940.5882352935,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 300,
+      "total_land_cover_hectares": 286758.43137254904,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 11292.549019607844,
+      "total_land_cover_hectares": 8139914.21568627,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 1043591.4705882353,
+      "total_land_cover_hectares": 360825293.137255,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 203228.431372549,
+      "total_land_cover_hectares": 6995368.823529412,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 35750,
+      "total_land_cover_hectares": 612203.9215686275,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 5475,
+      "total_land_cover_hectares": 4886082.05882353,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 3825,
+      "total_land_cover_hectares": 506704.8039215686,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 486183.431372549,
+      "total_land_cover_hectares": 37859076.078431375,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 5041908.039215686,
+      "total_land_cover_hectares": 210304932.35294116,
+      "name": "Savannas"
+    }
+  },
+  "2007": {
+    "1": {
+      "burned_hectars": 175,
+      "total_land_cover_hectares": 29042.450980392157,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 9908028.333333336,
+      "total_land_cover_hectares": 177471812.25490195,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 28541.274509803923,
+      "total_land_cover_hectares": 5644207.843137258,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1764509.9019607846,
+      "total_land_cover_hectares": 25235872.156862747,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 9566.176470588234,
+      "total_land_cover_hectares": 3963365.5882352907,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 106725,
+      "total_land_cover_hectares": 8206871.176470589,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 325,
+      "total_land_cover_hectares": 284554.0196078432,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 17206.37254901961,
+      "total_land_cover_hectares": 8137315.588235294,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 2535198.8235294116,
+      "total_land_cover_hectares": 358962103.52941173,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 670413.431372549,
+      "total_land_cover_hectares": 7143619.705882354,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 109966.568627451,
+      "total_land_cover_hectares": 684189.8039215687,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 11275,
+      "total_land_cover_hectares": 4862400,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 8525,
+      "total_land_cover_hectares": 492673.5294117647,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 2421010.882352941,
+      "total_land_cover_hectares": 38666396.17647058,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 18605878.333333332,
+      "total_land_cover_hectares": 210513184.3137255,
+      "name": "Savannas"
+    }
+  },
+  "2008": {
+    "1": {
+      "burned_hectars": 75,
+      "total_land_cover_hectares": 29010.09803921568,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 4682420.5882352935,
+      "total_land_cover_hectares": 176717854.60784313,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 32636.274509803923,
+      "total_land_cover_hectares": 5700571.960784316,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1303752.6470588236,
+      "total_land_cover_hectares": 25830440.980392154,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 5050,
+      "total_land_cover_hectares": 3965234.705882349,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 77500,
+      "total_land_cover_hectares": 8196767.647058822,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 350,
+      "total_land_cover_hectares": 280340.1960784314,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 15354.019607843136,
+      "total_land_cover_hectares": 8124244.50980392,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 711660.4901960784,
+      "total_land_cover_hectares": 357843277.45098037,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 279381.76470588235,
+      "total_land_cover_hectares": 7258302.45098039,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 51125,
+      "total_land_cover_hectares": 714666.0784313725,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 8700,
+      "total_land_cover_hectares": 4670075,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 2500,
+      "total_land_cover_hectares": 455961.47058823536,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 637579.9019607843,
+      "total_land_cover_hectares": 39365649.50980393,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 7319760.980392157,
+      "total_land_cover_hectares": 211145211.47058824,
+      "name": "Savannas"
+    }
+  },
+  "2009": {
+    "1": {
+      "burned_hectars": 515.0980392156863,
+      "total_land_cover_hectares": 28497.94117647059,
+      "name": "Evergreen Needleleaf Forest"
+    },
+    "10": {
+      "burned_hectars": 2873466.274509804,
+      "total_land_cover_hectares": 175866482.15686277,
+      "name": "Grasslands"
+    },
+    "11": {
+      "burned_hectars": 37861.274509803916,
+      "total_land_cover_hectares": 5725664.215686277,
+      "name": "Permanent Wetlands"
+    },
+    "12": {
+      "burned_hectars": 1209422.156862745,
+      "total_land_cover_hectares": 26115872.45098039,
+      "name": "Croplands"
+    },
+    "13": {
+      "burned_hectars": 3450,
+      "total_land_cover_hectares": 3967359.7058823486,
+      "name": "Urban and Built-up"
+    },
+    "14": {
+      "burned_hectars": 53700,
+      "total_land_cover_hectares": 8270313.529411765,
+      "name": "Cropland/Natural Vegetation Mosaic"
+    },
+    "16": {
+      "burned_hectars": 325,
+      "total_land_cover_hectares": 274841.274509804,
+      "name": "Barren or Sparsely Vegetated"
+    },
+    "17": {
+      "burned_hectars": 13624.41176470588,
+      "total_land_cover_hectares": 8126482.549019606,
+      "name": "Unknown Land Cover Type"
+    },
+    "2": {
+      "burned_hectars": 381125.39215686277,
+      "total_land_cover_hectares": 357268039.50980383,
+      "name": "Evergreen Broadleaf Forest"
+    },
+    "4": {
+      "burned_hectars": 44977.05882352941,
+      "total_land_cover_hectares": 7129188.529411765,
+      "name": "Deciduous Broadleaf Forest"
+    },
+    "5": {
+      "burned_hectars": 17725,
+      "total_land_cover_hectares": 670585.5882352941,
+      "name": "Mixed Forest"
+    },
+    "6": {
+      "burned_hectars": 4350,
+      "total_land_cover_hectares": 4452900,
+      "name": "Closed Shrublands"
+    },
+    "7": {
+      "burned_hectars": 600,
+      "total_land_cover_hectares": 404781.07843137253,
+      "name": "Open Shrublands"
+    },
+    "8": {
+      "burned_hectars": 447115.29411764705,
+      "total_land_cover_hectares": 39845994.901960775,
+      "name": "Woody Savannas"
+    },
+    "9": {
+      "burned_hectars": 3797919.607843137,
+      "total_land_cover_hectares": 212150554.70588234,
+      "name": "Savannas"
+    }
+  },
   "2010": {
     "1": {
       "burned_hectars": 300,
