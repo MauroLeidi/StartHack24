@@ -5,6 +5,7 @@ import { Card, Box, Slider } from "@mui/material";
 import View1 from "./components/view1";
 import View2 from "./components/view2";
 import View3 from "./components/view3";
+import View4 from "./components/view4";
 
 function App() {
   const [htmlContent, setHtmlContent] = useState("");
@@ -116,7 +117,7 @@ function App() {
         <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
         <MenuItem viewId={3}>Blabla</MenuItem>
         <hr style={{ width: "80%", border: "0.5px solid #e0e0e0" }} />
-        <MenuItem viewId={4}>Blabla</MenuItem>
+        <MenuItem viewId={4}>Infrastructural analysis</MenuItem>
       </Card>
 
       {/* Main Content Area */}
@@ -176,6 +177,8 @@ function App() {
               <View2 />
             ) : view === 3 ? (
               <View3 year={year} htmlcontent={htmlContent} />
+            ) : view == 4 ? (
+              <View4 year={year} htmlcontent={htmlContent} />
             ) : null // or some default content
           }
         </div>

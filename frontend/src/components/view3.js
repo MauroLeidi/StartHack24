@@ -23,11 +23,7 @@ function view3({ year, htmlContent }) {
   // Modified to calculate CO2 loss by multiplying burned hectares by 25
   const getCO2Loss = () =>
     Object.values(landCoverBurnedAreaStats[year])
-      .sort(
-        (a, b) =>
-          a.burned_hectars / a.total_land_cover_hectares -
-          b.burned_hectars / b.total_land_cover_hectares
-      )
+      .sort((a, b) => a.burned_hectars - b.burned_hectars)
       .map((lc_ba_stat) => lc_ba_stat.burned_hectars * 205); // CO2 loss calculation
 
   const getOption = () => {

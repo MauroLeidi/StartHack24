@@ -13,6 +13,7 @@ GEE_PROJECT = os.environ.get('GEE_PROJECT')
 
 def init_ee():
     ee.Authenticate()
+    print(GEE_PROJECT)
     ee.Initialize(project=GEE_PROJECT)
 
 
@@ -108,6 +109,20 @@ def get_chart_by_layers(layers: List[str]):
             lc = lc.style(**style)  # Apply the style
             layer_name = "Biomes"
             igb = {}
+        elif layer.startswith("urban"):
+            year = layer.split("_")[1]
+            lc = ee.Image(f'MODIS/006/MCD12Q1/{year}_01_01').select('LC_Type1')
+            lc = lc.clip(brazil_shapefile)
+            lc = lc.eq(13)
+            igb = {
+                'min': 1.0,
+                'max': 1.0,  # Since we're only visualizing one class, min and max can both be set to 1.
+                'palette': ['a5a5a5'],  # Urban and Built-up color (assuming grey here, replace with the desired color).
+            }
+
+            # Add the layer to the map. Since we're only visualizing one class, the name doesn't need a year.
+            layer_name = f"Urban and Built-up Land Cover {year}"
+
         brazil_map.add_ee_layer(lc, igb, layer_name)
     brazil_map.add_child(folium.LayerControl())
     return brazil_map._repr_html_()
