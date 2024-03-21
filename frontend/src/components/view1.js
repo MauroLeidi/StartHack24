@@ -5,8 +5,48 @@ import chart3 from "../assets/chart3.png";
 import chart4 from "../assets/chart4.jpeg";
 import { Card, CardMedia, Grid } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
+import landCoverBurnedAreaStats from "../data/land_cover_burned_area_stats.json";
 
-function view1() {
+function view1({ year }) {
+  const wrapLabel = (label, n) => {
+    var words = label.split(" ");
+    var wrappedText = words.reduce((result, word, i) => {
+      return i % n === 0 ? result + "\n" + word : result + " " + word;
+    }, "");
+    return wrappedText.trim();
+  };
+
+  const getLandCoverNames = () =>
+    Object.values(landCoverBurnedAreaStats[year])
+      .sort(
+        (a, b) =>
+          a.burned_hectars / a.total_land_cover_hectares -
+          b.burned_hectars / b.total_land_cover_hectares
+      )
+      .map((lc_ba_stat) => wrapLabel(lc_ba_stat.name, 2));
+
+  const getBurnedHectars = () =>
+    Object.values(landCoverBurnedAreaStats[year])
+      .sort(
+        (a, b) =>
+          a.burned_hectars / a.total_land_cover_hectares -
+          b.burned_hectars / b.total_land_cover_hectares
+      )
+      .map((lc_ba_stat) => lc_ba_stat.burned_hectars);
+
+  const getBurnedPercentage = () =>
+    Object.values(landCoverBurnedAreaStats[year])
+      .sort(
+        (a, b) =>
+          a.burned_hectars / a.total_land_cover_hectares -
+          b.burned_hectars / b.total_land_cover_hectares
+      )
+      .map(
+        (lc_ba_stat) =>
+          (lc_ba_stat.burned_hectars / lc_ba_stat.total_land_cover_hectares) *
+          100
+      );
+
   const getOption = () => {
     return {
       grid: {
@@ -14,24 +54,33 @@ function view1() {
         left: 50, // provides 100 pixels of space from the bottom.
       },
       title: {
-        text: "ECharts in React",
+        text: "Burned Area % by Land Cover",
       },
       tooltip: {},
       legend: {
-        data: ["Sales"],
+        data: ["Burned Area % by Land Cover"],
       },
       xAxis: {
         type: "value",
+        axisLabel: {
+          formatter: function (value) {
+            return value + "%"; // append '%'
+          },
+        },
       },
       yAxis: {
-        data: ["shirt", "cardign", "chiffon shirt", "pants", "heels", "socks"],
+        data: getLandCoverNames(),
+        axisLabel: {
+          rotate: 45,
+          fontSize: 10,
+        },
       },
       series: [
         {
-          name: "Sales",
+          name: "%",
           type: "bar",
-          data: [5, 20, 36, 10, 10, 20],
-          barWidth: "20%",
+          data: getBurnedPercentage(),
+          barWidth: "50%",
         },
       ],
     };
@@ -42,7 +91,7 @@ function view1() {
       <Grid item>
         <ReactEcharts
           option={getOption()}
-          style={{ height: "350px", width: "100%" }}
+          style={{ height: "500px", width: "100%" }}
           className="react_for_echarts"
         />
       </Grid>

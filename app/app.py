@@ -14,6 +14,7 @@ def get_map_by_layers():
         return jsonify({'error': 'Missing "layers" in request body'}), 400
     layers = request_data['layers']
     map_html = get_chart_by_layers(layers)
+    print("done!")
     return map_html, 200, {'Content-Type': 'text/html'}
 
 
