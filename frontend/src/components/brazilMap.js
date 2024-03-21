@@ -45,10 +45,6 @@ const BrazilMap = ({ year, layers }) => {
         width: "100%",
         height: "100%",
         backgroundColor: "#fff",
-        borderRadius: "20px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        padding: "20px",
-        margin: "20px",
         boxSizing: "border-box",
         display: "flex",
         justifyContent: "center",
@@ -60,7 +56,12 @@ const BrazilMap = ({ year, layers }) => {
       ) : (
         <div
           dangerouslySetInnerHTML={{ __html: htmlContent }}
-          style={{ width: "100%", height: "100%" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            maxHeight: "50vh",
+            overflow: "auto",
+          }}
         />
       )}
     </div>
