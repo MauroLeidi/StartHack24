@@ -10,15 +10,6 @@ function App() {
   const [view, setView] = useState(1);
   const [year, setYear] = useState(2010);
 
-  const marks = [];
-  for (let year = 2010; year <= 2020; year++) {
-    marks.push({ value: year, label: `${year}` });
-  }
-
-  const handleYearChange = (event, newValue) => {
-    setYear(newValue);
-  };
-
   useEffect(() => {
     // Define the function that fetches the HTML
     const fetchLandcoverHtml = async () => {
@@ -136,33 +127,9 @@ return (
           <spanp>Subtitle</spanp>
         </div>
       </Card>
-
-      {/* Card for Year Selector */}
-      <Card
-        elevation={3}
-        style={{
-          marginBottom: "20px",
-          paddingLeft: "30px",
-            paddingRight: "30px",
-            paddingTop: "20px",
-            paddingBottom: "20px",
-          borderRadius: "20px",
-        }}
-      >
-        <Slider
-          defaultValue={2010}
-          step={1}
-          min={2010}
-          max={2020}
-          marks={marks}
-          valueLabelDisplay="auto"
-          onChange={handleYearChange}
-        />
-      </Card>
-
       {/* Dynamic View Content */}
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
-        {view === 1 || view === 2 ? <View1 year={year}/> : <View2 />}
+        {view === 1 || view === 2 ? <View1/> : <View2 />}
       </div>
     </div>
   </div>
