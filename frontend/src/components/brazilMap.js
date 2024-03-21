@@ -61,6 +61,7 @@ const BrazilMap = ({ year, layers }) => {
           width: "100%",
           height: "100%",
           overflow: "hidden",
+            maxHeight: "50vh",
         }}
       />
     )}
