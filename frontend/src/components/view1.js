@@ -6,8 +6,9 @@ import chart4 from "../assets/chart4.jpeg";
 import { Card, CardMedia, Grid } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
 import landCoverBurnedAreaStats from "../data/land_cover_burned_area_stats.json";
+import BrazilMap from "./brazilMap";
 
-function view1({ year }) {
+function view1({ year, htmlContent }) {
   const wrapLabel = (label, n) => {
     var words = label.split(" ");
     var wrappedText = words.reduce((result, word, i) => {
@@ -86,27 +87,52 @@ function view1({ year }) {
     };
   };
 
-  return (
-    <Grid container direction="column" spacing={2}>
-      <Grid item>
-        <ReactEcharts
-          option={getOption()}
-          style={{ height: "500px", width: "100%" }}
-          className="react_for_echarts"
-        />
+ return (
+  <Grid container direction="column" spacing={2} style={{ height: "calc(100vh - [HeaderHeight]px)" }}>
+    {/* Row 1: Placeholder component spanning the full width */}
+    <Grid item style={{
+      height: "20vh",
+      padding: "20px",
+      backgroundColor: "#fff",
+      borderRadius: "20px",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      margin: "20px"
+    }}>
+      <h2>Placeholder</h2> {/* Replace this with your actual component/content */}
+    </Grid>
+
+    {/* Row 2: Split into two columns */}
+    <Grid item container spacing={2} style={{ height: "50vh" }}>
+      {/* Left Column: BrazilMap */}
+      <Grid item xs={6} style={{
+        height: "100%",
+      }}>
+        <BrazilMap htmlContent={htmlContent} />
       </Grid>
-      <Grid item>
-        <Card>
-          <CardMedia
-            component="img"
-            height="140"
-            image={chart2}
-            title="chart 2"
+
+      {/* Right Column: Card containing ReactEcharts */}
+      <Grid item xs={6} style={{ height: "100%" }}>
+        <Card style={{
+          height: "100%",
+          display: "flex" ,
+          padding: "20px",
+          backgroundColor: "#fff",
+          borderRadius: "20px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          margin: "20px"
+        }}>
+          <ReactEcharts
+            option={getOption()}
+            style={{ height: "100%", width: "100%" }}
+            className="react_for_echarts"
           />
         </Card>
       </Grid>
     </Grid>
-  );
+  </Grid>
+);
+
+
 }
 
 export default view1;
