@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Grid, Slider } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
 import landCoverBurnedAreaStats from "../data/land_cover_burned_area_stats.json";
+
 import BrazilMap from "./brazilMap";
 
 function View4() {
