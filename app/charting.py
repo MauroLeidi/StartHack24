@@ -231,10 +231,12 @@ def get_chart_by_layers(layers: List[str]):
             points_feature_collection = ee.FeatureCollection(features)
 
             # Create a map
-            brazil_map = geemap.Map(center=[-9.26, -55.4], zoom=5, height=750, width=2000)
+            brazil_map = geemap.Map(center=[-9.26, -55.4], zoom=5, height=500, width="100%")
 
             # Add the FeatureCollection as a single layer
             brazil_map.addLayer(points_feature_collection, {}, 'Points')
+            legend_keys.append('Wildfire Predictions')
+            legend_colors.append('000000')
 
         if not layer.startswith("prediction"):
             brazil_map.add_ee_layer(lc, igb, layer_name)
