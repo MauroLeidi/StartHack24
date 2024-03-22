@@ -10,41 +10,6 @@ import View4 from "./components/view4";
 function App() {
   const [htmlContent, setHtmlContent] = useState("");
   const [view, setView] = useState(1);
-  const [year, setYear] = useState(2010);
-
-  useEffect(() => {
-    // Define the function that fetches the HTML
-    const fetchLandcoverHtml = async () => {
-      // Your payload, adjust the years as needed
-      const payload = {
-        layers: ["biomes", "landcover_" + year, "burn_" + year],
-      };
-
-      // Fetch the HTML from the FastAPI endpoint
-      try {
-        const response = await fetch("http://localhost:8000/landcover", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (response.ok) {
-          const html = await response.text();
-          console.log(html);
-          setHtmlContent(html);
-        } else {
-          console.error("Failed to fetch HTML");
-        }
-      } catch (error) {
-        console.error("Error fetching HTML:", error);
-      }
-    };
-
-    // Call the function
-    fetchLandcoverHtml();
-  }, [year]); // Empty dependency array means this effect runs only once after the initial render
 
   const MenuItem = ({ viewId, children }) => (
     <div
