@@ -198,10 +198,45 @@ def get_chart_by_layers(layers: List[str]):
             brazil_map = folium.Map(location=[-21.1767, -47.8208], zoom_start=10, height=500)
             legend_keys.append(layer_name)
             legend_colors.append('ffc0cb')
+        
+        """ 
+        elif layer.startswith("prediction"):
+
+        # Load the JSON file with points
+        with open('/content/output.json', 'r') as file:
+            points_list = json.load(file)
+
+        # Convert the list of points to ee.Feature objects
+        features = []
+        for point in points_list:
+            # Ensure 'latitude' and 'longitude' keys exist
+            if 'latitude' in point and 'longitude' in point:
+                ee_point = ee.Geometry.Point([point['longitude'], point['latitude']])
+                features.append(ee.Feature(ee_point))
+
+        # Create a FeatureCollection from the list of ee.Feature objects
+        points_feature_collection = ee.FeatureCollection(features)
+
+        # Create a map
+        Map = geemap.Map(center=[-23, -53], zoom=6)
+
+        # Add the FeatureCollection as a single layer
+        Map.addLayer(points_feature_collection, {}, 'Points')
+
+        # Optional layers (if defined elsewhere in your code)
+        # Map.addLayer(ba_clip, burnedAreaVis, 'Burned Area')
+        # Map.addLayer(brazil_shapefile, {'color': 'red'}, 'Brazil', opacity=0.5)
+
+        Map.addLayerControl()  # Add layer control to toggle layers
+
+        # Display the map
+        Map 
+        brazil_map.add_ee_layer(lc, igb, layer_name)"""
         brazil_map.add_ee_layer(lc, igb, layer_name)
+        
 
     brazil_map.add_child(folium.LayerControl())
     # create dict from legend keys and values
     legend_dict = dict(zip(legend_keys, legend_colors))
-    brazil_map.add_legend(title="hello", legend_dict=legend_dict)
+    brazil_map.add_legend(title="", legend_dict=legend_dict)
     return brazil_map._repr_html_()

@@ -8,7 +8,7 @@ import BrazilMap from "./brazilMap";
 
 function View4() {
   const [year, setYear] = useState(2010);
-  const maxCO2LandCoverName = ""
+  const maxCO2LandCoverName = "";
   // Year Slider marks
   const marks = [];
   for (let year = 2010; year <= 2020; year++) {
@@ -179,42 +179,11 @@ function View4() {
               margin: "20px",
             }}
           >
-            <ReactEcharts
-              option={getOption()}
-              style={{ height: "100%", width: "100%" }}
-              className="react_for_echarts"
-            />
+            <h1>Statistics on impact of burned area </h1>
+            <p>Total infrastructure affected: {urbanData?.burned_hectars}</p>
+            <p>Total population affected: {population}</p>
           </Card>
         </Grid>
-      </Grid>
-      <Grid
-        item
-        style={{
-          height: "20vh",
-          padding: "20px",
-          backgroundColor: "#fff",
-          borderRadius: "20px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          margin: "20px",
-        }}
-      >
-        <Card
-          style={{
-            height: "100%",
-            display: "flex",
-            padding: "20px",
-            backgroundColor: "#fff",
-            borderRadius: "20px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            margin: "20px",
-          }}
-        >
-          <ReactEcharts
-            option={getOptionPopulation()}
-            style={{ height: "100%", width: "100%" }}
-            className="react_for_echarts"
-          />
-        </Card>
       </Grid>
     </Grid>
   );
