@@ -6,6 +6,7 @@ import View1 from "./components/view1";
 import View2 from "./components/view2";
 import View3 from "./components/view3";
 import View4 from "./components/view4";
+import View5 from "./components/view5";
 
 function App() {
   const [htmlContent, setHtmlContent] = useState("");
