@@ -203,5 +203,5 @@ def get_chart_by_layers(layers: List[str]):
     brazil_map.add_child(folium.LayerControl())
     # create dict from legend keys and values
     legend_dict = dict(zip(legend_keys, legend_colors))
-    brazil_map.add_legend(title="hello", legend_dict=legend_dict)
+    brazil_map.add_legend(title="", legend_dict=legend_dict)
     return brazil_map._repr_html_()
