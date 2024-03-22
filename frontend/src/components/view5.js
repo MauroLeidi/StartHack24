@@ -6,7 +6,7 @@ import populationData from "../data/yearly_affected_population.json";
 
 import BrazilMap from "./brazilMap";
 
-function View4() {
+function View5() {
   const [year, setYear] = useState(2010);
   const maxCO2LandCoverName = "";
   // Year Slider marks
@@ -120,23 +120,15 @@ function View4() {
       container
       direction="column"
       spacing={2}
-      style={{ height: "100%", width: "100%" }}
+      style={{ width:"87vw", height: "100vh" }}
     >
-      <Card
-            style={{
-              height: "100%",
-              display: "flex",
-              padding: "20px",
-              backgroundColor: "#fff",
-              borderRadius: "20px",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              margin: "20px",
-            }}
-          >
-
-          </Card>
+      <Grid item container spacing={2} style={{ height: "100%", width: "100%" }}>
+        <Grid item xs={12} style={{ height: "100%", width: "100%" }}>
+          <BrazilMap year={year} layers={["prediction"]} style={{ height: "100%", width: "100%" }}/>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }
 
-export default View4;
+export default View5;
