@@ -83,10 +83,10 @@ function App() {
 
         {/* Menu Items as Sub-Entries */}
         <MenuItem viewId={1}>Overview</MenuItem>
-        <MenuItem viewId={2}>Impact per Landcover</MenuItem>
-        <MenuItem viewId={3}>CO2 Emissions</MenuItem>
+        <MenuItem viewId={2}>Landcover Burn Analysis</MenuItem>
+        <MenuItem viewId={3}>Wildfire CO2 Emissions</MenuItem>
         <MenuItem viewId={4}>Impact on Society</MenuItem>
-        <MenuItem viewId={5}>Future Overview</MenuItem>
+        <MenuItem viewId={5}>Wildfire Predictions</MenuItem>
       </Card>
       {/* Dynamic View Content */}
       <div style={{ flexGrow: 1, overflowY: "auto" }}>
