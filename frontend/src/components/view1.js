@@ -70,6 +70,7 @@ function View1() {
 
   const handleSliderChange = (event, newIndex) => {
     setSliderIndex(newIndex);
+    setYear(2010 + sliderIndex);
   };
 
   function formatNumber(num) {
@@ -125,14 +126,14 @@ function View1() {
   }));
 
   return (
-    <Grid container style={{ height: "80vh" }} padding={2} spacing={2}>
+    <Grid container style={{ height: "100vh" }} padding={2} spacing={2}>
       {/* Row 1: Split into two columns */}
       <Grid item xs={12} style={{ height: "80%" }}>
         <Grid container spacing={2} style={{ height: "100%" }}>
           {/*  */}
           <Grid item xs={10}>
             <Card
-              style={{ padding: "20px", borderRadius: "20px", height: "100%" }}
+              style={{ padding: "2px", borderRadius: "20px", height: "100%" }}
             >
               {isLoading ? (
                 <ClipLoader color="#007bff" size={150} /> // Use the ClipLoader spinner
@@ -145,7 +146,7 @@ function View1() {
           {/* Right Column: Card containing fat metric */}
           <Grid item xs={2}>
             <Grid container direction={"row"} spacing={2}>
-              <Grid item>
+              <Grid item xs={12}>
                 <Card
                   style={{
                     padding: "10px",
@@ -181,11 +182,7 @@ function View1() {
                     width: "100%",
                   }}
                 >
-                  <Typography
-                    variant="h6"
-                    gutterBottom
-                    style={{ fontFamily: "Glegoo" }}
-                  >
+                  <Typography variant="h6" gutterBottom>
                     Total Year Burn <br />
                   </Typography>
                   <Typography variant="h3" gutterBottom>
