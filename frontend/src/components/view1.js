@@ -14,64 +14,63 @@ function View1() {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchLandcoverHtml = async (layers) => {
+    const payload = {
+      layers: layers, // Use the layers argument to construct the payload
+    };
 
-  const payload = {
-    layers: layers, // Use the layers argument to construct the payload
-  };
+    try {
+      const response = await fetch("http://localhost:8000/landcover", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-  try {
-    const response = await fetch("http://localhost:8000/landcover", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (response.ok) {
-      const html = await response.text();
-      return html;
-    } else {
-      console.error("Failed to fetch HTML");
+      if (response.ok) {
+        const html = await response.text();
+        return html;
+      } else {
+        console.error("Failed to fetch HTML");
+      }
+    } catch (error) {
+      console.error("Error fetching HTML:", error);
     }
-  } catch (error) {
-    console.error("Error fetching HTML:", error);
-  }
-};
+  };
 
   useEffect(() => {
-  const loadMaps = async () => {
-    const maps = [];
-    for (let y = 2010; y <= 2011; y++) {
-      let layers = ["landcover_" + y, "burn_" + y]; // Notice the change to `y` for the burn layer
-      try {
-        const htmlContent = await fetchLandcoverHtml(layers);
-        if (htmlContent) {
-          maps.push(
-            <BrazilMapStatic
-              key={y} // Adding a key for React list rendering best practices
-              htmlcontent={htmlContent}
-            />
-          );
-        } else {
-          // Handle the case where htmlContent is null or undefined
-          console.error(`Failed to fetch content for year ${y}`);
+    const loadMaps = async () => {
+      const maps = [];
+      for (let y = 2010; y <= 2012; y++) {
+        let layers = ["landcover_" + y, "burn_" + y]; // Notice the change to `y` for the burn layer
+        try {
+          const htmlContent = await fetchLandcoverHtml(layers);
+          if (htmlContent) {
+            maps.push(
+              <BrazilMapStatic
+                key={y} // Adding a key for React list rendering best practices
+                htmlcontent={htmlContent}
+              />
+            );
+          } else {
+            // Handle the case where htmlContent is null or undefined
+            console.error(`Failed to fetch content for year ${y}`);
+          }
+        } catch (error) {
+          console.error(`Error fetching content for year ${y}:`, error);
         }
-      } catch (error) {
-        console.error(`Error fetching content for year ${y}:`, error);
       }
-    }
-    console.log(maps);
-    setBrazilMaps(maps);
-    setIsLoading(false); // Only set loading to false after all maps are loaded
-  };
+      console.log(maps);
+      setBrazilMaps(maps);
+      setIsLoading(false); // Only set loading to false after all maps are loaded
+    };
 
-  loadMaps(); // Call the async function to load maps
-}, []); // Empty dependency array to only run once on component mount
-
+    loadMaps(); // Call the async function to load maps
+  }, []); // Empty dependency array to only run once on component mount
 
   const handleSliderChange = (event, newIndex) => {
     setSliderIndex(newIndex);
+    setYear(2010 + sliderIndex);
   };
 
   function formatNumber(num) {
@@ -127,61 +126,92 @@ function View1() {
   }));
 
   return (
-    <Grid container style={{ height: "80vh" }} padding={2} spacing={2}>
-      {/* Row 1: Split into two columns */}
-      <Grid item xs={12} style={{ height: "80%" }}>
-        <Grid container spacing={2} style={{ height: "100%" }}>
-          {/*  */}
-          <Grid item xs={10}>
-            <Card
-              style={{ padding: "20px", borderRadius: "20px", height: "100%" }}
-            >
-              {isLoading ? (
-               <ClipLoader color="#007bff" size={150} /> // Use the ClipLoader spinner
-          ) : (
-                  brazilMaps[sliderIndex]
-          )}
-            </Card>
-          </Grid>
+  <Grid container style={{ height: "100vh", width: "85vw" }} spacing={2}>
+    {/* Row 1: Split into two columns */}
+    <Grid item xs={12} style={{ height: "80%" }}>
+      <Grid container spacing={2} style={{ height: "100%" }}>
+        {/* Left Column: Main content */}
+        <Grid item xs={10}>
+          <Card style={{ padding: "2px", borderRadius: "5px", height: "100%" }}>
+            {isLoading ? (
+              <ClipLoader color="#007bff" size={150} /> // Use the ClipLoader spinner
+            ) : (
+              brazilMaps[sliderIndex]
+            )}
+          </Card>
+        </Grid>
 
-          {/* Right Column: Card containing fat metric */}
-          <Grid item xs={2}>
-            <Card
-              style={{
-                padding: "10px",
-                borderRadius: "20px",
-                height: "100%",
-              }}
-            >
-              <Typography>
-                Total Deforestation <br />
-                {formatNumber(getTotalDeforestation())}%
-              </Typography>
-              <Typography>
-                Total Year Burn <br />
-                {formatNumber(getTotalBurnedArea())} <br /> ha{" "}
-              </Typography>
-            </Card>
+        {/* Right Column: Cards containing metrics with fixed widths */}
+        <Grid item xs={2}>
+          <Grid container direction={"row"} spacing={2}>
+            <Grid item xs={12}>
+              <Card
+                style={{
+                  padding: "10px",
+                  borderRadius: "5px",
+                  width: "100%", // Fixed width for the card
+                }}
+              >
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                <link href="https://fonts.googleapis.com/css2?family=Francois+One&family=Glegoo:wght@700&display=swap" rel="stylesheet" />
+                <Typography variant="h6" gutterBottom>
+                  Total Deforestation
+                  <br />
+                </Typography>
+                <Typography variant="h3" gutterBottom>
+                  <b>{formatNumber(getTotalDeforestation())}</b>
+                  <sup>%</sup>
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid item xs={12}> {/* Ensure this grid item also takes full width */}
+              <Card
+                style={{
+                  padding: "10px",
+                  borderRadius: "5px",
+                  width: "100%", // Fixed width for the card
+                }}
+              >
+                <Typography variant="h6" gutterBottom>
+                  Total Year Burn <br />
+                </Typography>
+                <Typography variant="h3" gutterBottom>
+                  <b>{formatNumber(getTotalBurnedArea())}</b> <sup>ha</sup>
+                </Typography>
+              </Card>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-      {/* Row 2: for Year Selector Slider */}
-      <Grid item xs={12} style={{ height: "15%" }}>
-         <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "20px", boxShadow: "0 0 0 0"  }}>
-         <Slider
-            value={sliderIndex}
-            onChange={handleSliderChange}
-            step={1}
-            min={0}
-            max={marks.length - 1}
-            valueLabelDisplay="off"
-            marks={marks}
-            style={{ width: "90%" }}
-          />
-        </Card>
-      </Grid>
     </Grid>
-  );
+    {/* Row 2: for Year Selector Slider */}
+    <Grid item xs={12} style={{ height: "8%" }}>
+      <Card
+        style={{
+          height: "100%",
+          backgroundColor: "#fff",
+          paddingTop: "10px",
+          paddingBottom: "0px",
+          borderRadius: "5px",
+          boxShadow: "0 0 0 0",
+        }}
+      >
+        <Slider
+          value={sliderIndex}
+          onChange={handleSliderChange}
+          step={1}
+          min={0}
+          max={marks.length - 1}
+          valueLabelDisplay="off"
+          marks={marks}
+          style={{ width: "90%" }}
+        />
+      </Card>
+    </Grid>
+  </Grid>
+);
+
 }
 
 export default View1;

@@ -124,7 +124,7 @@ function View5() {
     >
       <Grid item container spacing={2} style={{ height: "100%", width: "100%" }}>
         <Grid item xs={12} style={{ height: "100%", width: "100%" }}>
-          <BrazilMap year={year} layers={["prediction"]} style={{ height: "100%", width: "100%" }}/>
+          <BrazilMap year={year} layers={["biomes", "prediction"]} style={{ height: "100%", width: "100%" }}/>
         </Grid>
       </Grid>
     </Grid>

@@ -68,7 +68,7 @@ function View2() {
       containLabel: true,
     },
     title: {
-      text: "Burned Area by Landcover Type",
+      text: "% of Area Burned by Landcover Type",
       left: 'center',  // Centers the title
     },
     tooltip: {},

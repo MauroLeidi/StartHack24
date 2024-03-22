@@ -116,17 +116,17 @@ function View4() {
   };
 
   return (
-  <Grid container style={{ height: "80vh" }} padding={2} spacing={2}>
+  <Grid container style={{ height: "80vh" }} spacing={2}>
     <Grid item container spacing={2} style={{ height: "100%", width: "100%" }}>
       <Grid item xs={8} style={{ height: "100%" }}>
         <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "5px", boxShadow: "0 0 0 0" }}>
-          <BrazilMap year={year} layers={["urban_" + year, "burn_" + year]} />
+          <BrazilMap year={year} layers={["population", "urban_" + year, "burn_" + year]} />
         </Card>
       </Grid>
       <Grid item xs={4} style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Card style={{ width: '100%', height: '100%', backgroundColor: '#fff', padding: "20px", borderRadius: "5px", boxShadow: "0 0 0 0", display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
           <div style={{ textAlign: 'center' }}>
-            <p style={{ margin: '10px 0', fontSize: '22px' }}>Total infrastructure affected</p>
+            <p style={{ margin: '10px 0', fontSize: '22px' }}>Affected Infrastructure Area</p>
             <p style={{ margin: '10px 0', fontSize: '60px', fontWeight: 'bold' }}>{urbanData?.burned_hectars}ha</p>
             <div style={{ width: '100%', borderTop: '2px solid #eee' }}></div>
           </div>
@@ -138,7 +138,7 @@ function View4() {
       </Grid>
     </Grid>
     <Grid item xs={12} style={{ height: '10%', marginTop: "40px" }}>
-      <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "5px", boxShadow: "0 0 0 0" }}>
+      <Card style={{ width:'99%', height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "5px", boxShadow: "0 0 0 0" }}>
         <Slider
           value={year}
           onChange={handleYearChange}

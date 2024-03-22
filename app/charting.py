@@ -124,6 +124,9 @@ def get_chart_by_layers(layers: List[str]):
                     'dcd159', 'dade48', 'fbff13', 'b6ff05', '27ff87', 'c24f44',
                     'a5a5a5', 'ff6d4c', '69fff8', 'f9ffa4', '1c0dff',
                 ],
+                'opacity': 0.6
+                # reduce brightness
+
             }
             layer_name = f"Land Cover {year}"
             legend_keys += list(LANDCOVER_TYPE_TO_COLOR.keys())
@@ -173,15 +176,15 @@ def get_chart_by_layers(layers: List[str]):
         elif layer.startswith("biomes"):
             lc = geemap.shp_to_ee('../data/Brazil Biomes/Brazil_biomes.shp')
             style = {
-                "color": "ff0000",  # Outline color
-                "fillColor": "fff0060",  # Interior color with opacity
+                "color": "05450a",  # Outline color
+                "fillColor": "05450a",  # Interior color with opacity
                 "width": 1,  # Outline width
             }
             lc = lc.style(**style)  # Apply the style
             layer_name = "Biomes"
             igb = {}
             legend_keys.append(layer_name)
-            legend_colors.append('ffff0060')
+            legend_colors.append('05450a')
         elif layer.startswith("urban"):
             year = layer.split("_")[1]
             lc = ee.Image(f'MODIS/006/MCD12Q1/{year}_01_01').select('LC_Type1')
@@ -191,7 +194,8 @@ def get_chart_by_layers(layers: List[str]):
             igb = {
                 'min': 1.0,
                 'max': 1.0,  # Since we're only visualizing one class, min and max can both be set to 1.
-                'palette': ['ffc0cb'],  # Urban and Built-up color (assuming grey here, replace with the desired color).
+                'palette': ['69fff8'],
+                'opacity': 0.7
             }
 
             # Add the layer to the map. Since we're only visualizing one class, the name doesn't need a year.
@@ -214,6 +218,15 @@ def get_chart_by_layers(layers: List[str]):
                     ee_point = ee.Geometry.Point([point['longitude'], point['latitude']])
                     features.append(ee.Feature(ee_point))
 
+            # change the color of the points
+            for feature in features:
+                feature = feature.set('style', {
+                    'icon': {
+                        'color': 'red',
+                        'glyph': 'circle',
+                        'glyphColor': 'white'
+                    }
+                })
             # Create a FeatureCollection from the list of ee.Feature objects
             points_feature_collection = ee.FeatureCollection(features)
 
@@ -223,11 +236,6 @@ def get_chart_by_layers(layers: List[str]):
             # Add the FeatureCollection as a single layer
             brazil_map.addLayer(points_feature_collection, {}, 'Points')
 
-            # Optional layers (if defined elsewhere in your code)
-            # Map.addLayer(ba_clip, burnedAreaVis, 'Burned Area')
-            # Map.addLayer(brazil_shapefile, {'color': 'red'}, 'Brazil', opacity=0.5)
-
-            # brazil_map.addLayerControl()  # Add layer control to toggle layers
         if not layer.startswith("prediction"):
             brazil_map.add_ee_layer(lc, igb, layer_name)
     legend_dict = dict(zip(legend_keys, legend_colors))

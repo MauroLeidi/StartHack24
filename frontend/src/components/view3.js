@@ -11,7 +11,7 @@ function View3() {
     "Evergreen Broadleaf Forest"
   );
   const [maxCO2, setMaxCO2] = useState(0);
-  const CO2PerPlane = 1.7 * 2;
+  const CO2PerPlane = 1.7;
   const LANDCOVER_TYPE_TO_COLOR = {
     "Evergreen Needleleaf Forest": "#05450a",
     "Evergreen Broadleaf Forest": "#086a10",
@@ -21,15 +21,15 @@ function View3() {
     "Closed Shrublands": "#c6b044",
     "Open Shrublands": "#dcd159",
     "Woody Savannas": "#dade48",
-    Savannas: "#fbff13",
-    Grasslands: "#b6ff05",
+    "Savannas": "#fbff13",
+    "Grasslands": "#b6ff05",
     "Permanent Wetlands": "#27ff87",
-    Croplands: "#c24f44",
+    "Croplands": "#c24f44",
     "Urban and Built-up": "#a5a5a5",
     "Cropland/Natural Vegetation Mosaic": "#ff6d4c",
     "Snow and Ice": "#69fff8",
     "Barren or Sparsely Vegetated": "#f9ffa4",
-    Unclassified: "#1c0dff",
+    "Unclassified": "#1c0dff",
   };
 
   const findMaxCO2LandCoverName = () => {
@@ -82,40 +82,6 @@ function View3() {
       )
       .map((lc_ba_stat) => wrapLabel(lc_ba_stat.name, 2));
 
-  function getTotalCO2EmissionsOption(landCoverBurnedAreaStats, year) {
-    // Sum all CO2 emissions
-    const totalCO2Emissions = Object.values(
-      landCoverBurnedAreaStats[year]
-    ).reduce((sum, { burned_hectars }) => sum + burned_hectars * 50, 0); // Using the same factor as before, adjust if needed
-
-    // Average CO2 emissions from a car per 100km: 12kg (120g CO2 per km)
-    const averageCO2PerCarPer100km = 12;
-
-    // Calculate equivalent number of cars driving 100km
-    const equivalentCars = totalCO2Emissions / averageCO2PerCarPer100km;
-
-    // ECharts bar plot option for total CO2 emissions
-    return {
-      title: {
-        text: "Equivalent Number of Cars Driving 100km",
-      },
-      tooltip: {},
-      xAxis: {
-        type: "category",
-        data: ["CO2 as Cars "],
-      },
-      yAxis: {
-        type: "value",
-        name: "Equivalent Cars",
-      },
-      series: [
-        {
-          data: [equivalentCars.toFixed(0)],
-          type: "bar",
-        },
-      ],
-    };
-  }
 
   function getCO2LossOption() {
     const landCoverNamesAndCO2Loss = Object.values(
@@ -124,7 +90,7 @@ function View3() {
       .sort((a, b) => b.burned_hectars - a.burned_hectars)
       .map((lc_ba_stat) => ({
         name: wrapLabel(lc_ba_stat.name, 2),
-        value: lc_ba_stat.burned_hectars * co2emission[lc_ba_stat.name],
+        value: lc_ba_stat.burned_hectars * co2emission[lc_ba_stat.name] / 1000,
         itemStyle: {
           color: LANDCOVER_TYPE_TO_COLOR[lc_ba_stat.name] || "#999", // Fallback color if not defined
         },
@@ -136,8 +102,11 @@ function View3() {
         left: "center",
       },
       tooltip: {
-        trigger: "item",
-      },
+        trigger: 'item',
+        formatter: function (params) {
+          return `${params.name}: ${params.value.toLocaleString()} tons`;
+        }
+    },
       series: [
         {
           name: "CO2 Emissions",
@@ -359,7 +328,7 @@ function View3() {
           style={{
             height: "100%",
             backgroundColor: "#fff",
-            paddingTop: "0px",
+            paddingTop: "100px",
             paddingBottom: "0px",
             borderRadius: "5px",
             boxShadow: "0 0 0 0",
