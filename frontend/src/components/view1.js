@@ -41,7 +41,7 @@ function View1() {
   useEffect(() => {
     const loadMaps = async () => {
       const maps = [];
-      for (let y = 2010; y <= 2012; y++) {
+      for (let y = 2010; y <= 2020; y++) {
         let layers = ["landcover_" + y, "burn_" + y]; // Notice the change to `y` for the burn layer
         try {
           const htmlContent = await fetchLandcoverHtml(layers);
