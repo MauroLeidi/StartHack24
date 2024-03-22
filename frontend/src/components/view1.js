@@ -86,39 +86,82 @@ function View1() {
 
           {/* Right Column: Card containing fat metric */}
           <Grid item xs={2}>
-            <Card
-              style={{
-                padding: "10px",
-                borderRadius: "20px",
-                height: "100%",
-              }}
-            >
-              <Typography>
-                Total Deforestation <br />
-                {formatNumber(getTotalDeforestation())}%
-              </Typography>
-              <Typography>
-                Total Year Burn <br />
-                {formatNumber(getTotalBurnedArea())} <br /> ha{" "}
-              </Typography>
-            </Card>
+            <Grid container direction={"row"} spacing={2}>
+              <Grid item>
+                <Card
+                  style={{
+                    padding: "10px",
+                    borderRadius: "20px",
+                    width: "100%",
+                  }}
+                >
+                  <link rel="preconnect" href="https://fonts.googleapis.com" />
+                  <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossorigin
+                  />
+                  <link
+                    href="https://fonts.googleapis.com/css2?family=Francois+One&family=Glegoo:wght@700&display=swap"
+                    rel="stylesheet"
+                  />
+                  <Typography variant="h6" gutterBottom>
+                    Total Deforestation
+                    <br />
+                  </Typography>
+                  <Typography variant="h3" gutterBottom>
+                    <b>{formatNumber(getTotalDeforestation())}</b>
+                    <sup>%</sup>
+                  </Typography>
+                </Card>
+              </Grid>
+              <Grid item>
+                <Card
+                  style={{
+                    padding: "10px",
+                    borderRadius: "20px",
+                    width: "100%",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    gutterBottom
+                    style={{ fontFamily: "Glegoo" }}
+                  >
+                    Total Year Burn <br />
+                  </Typography>
+                  <Typography variant="h3" gutterBottom>
+                    <b>{formatNumber(getTotalBurnedArea())}</b> <sup>ha</sup>
+                  </Typography>
+                </Card>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
       {/* Row 2: for Year Selector Slider */}
       <Grid item xs={12} style={{ height: "15%" }}>
-         <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "20px", boxShadow: "0 0 0 0"  }}>
+        <Card
+          style={{
+            height: "100%",
+            backgroundColor: "#fff",
+            paddingTop: "20px",
+            paddingBottom: "0px",
+            borderRadius: "20px",
+            boxShadow: "0 0 0 0",
+          }}
+        >
           <Slider
-          value={year}
-          onChange={handleYearChange}
-          defaultValue={2010}
-          step={1}
-          min={2010}
-          max={2020}
-          valueLabelDisplay="off"
-          marks={marks}
-          style={{ width: "90%" }}
-        />
+            value={year}
+            onChange={handleYearChange}
+            defaultValue={2010}
+            step={1}
+            min={2010}
+            max={2020}
+            valueLabelDisplay="off"
+            marks={marks}
+            style={{ width: "90%" }}
+          />
         </Card>
       </Grid>
     </Grid>
