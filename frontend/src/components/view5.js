@@ -116,46 +116,27 @@ function View4() {
   };
 
   return (
-  <Grid container style={{ height: "80vh" }} padding={2} spacing={2}>
-    <Grid item container spacing={2} style={{ height: "100%", width: "100%" }}>
-      <Grid item xs={8} style={{ height: "100%" }}>
-        <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "5px", boxShadow: "0 0 0 0" }}>
-          <BrazilMap year={year} layers={["urban_" + year, "burn_" + year]} />
-        </Card>
-      </Grid>
-      <Grid item xs={4} style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Card style={{ width: '100%', height: '100%', backgroundColor: '#fff', padding: "20px", borderRadius: "5px", boxShadow: "0 0 0 0", display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ margin: '10px 0', fontSize: '22px' }}>Total infrastructure affected</p>
-            <p style={{ margin: '10px 0', fontSize: '60px', fontWeight: 'bold' }}>{urbanData?.burned_hectars}ha</p>
-            <div style={{ width: '100%', borderTop: '2px solid #eee' }}></div>
-          </div>
-          <div style={{ textAlign: 'center' , borderTop: '2px solid #eee' }}>
-            <p style={{ margin: '10px 0', fontSize: '22px' }}>People affected</p>
-            <p style={{ margin: '10px 0', fontSize: '60px', fontWeight: 'bold' }}>{Math.round(population).toLocaleString('de-DE')}</p>
-          </div>
-        </Card>
-      </Grid>
-    </Grid>
-    <Grid item xs={12} style={{ height: '10%', marginTop: "40px" }}>
-      <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "5px", boxShadow: "0 0 0 0" }}>
-        <Slider
-          value={year}
-          onChange={handleYearChange}
-          defaultValue={2010}
-          step={1}
-          min={2010}
-          max={2020}
-          valueLabelDisplay="off"
-          marks={marks}
-          style={{ width: "90%" }}
-        />
-      </Card>
-    </Grid>
-  </Grid>
-);
+    <Grid
+      container
+      direction="column"
+      spacing={2}
+      style={{ height: "100%", width: "100%" }}
+    >
+      <Card
+            style={{
+              height: "100%",
+              display: "flex",
+              padding: "20px",
+              backgroundColor: "#fff",
+              borderRadius: "20px",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              margin: "20px",
+            }}
+          >
 
-
+          </Card>
+    </Grid>
+  );
 }
 
 export default View4;

@@ -173,7 +173,7 @@ def get_chart_by_layers(layers: List[str]):
             lc = geemap.shp_to_ee('../data/Brazil Biomes/Brazil_biomes.shp')
             style = {
                 "color": "ff0000",  # Outline color
-                "fillColor": "ffff0060",  # Interior color with opacity
+                "fillColor": "fff0060",  # Interior color with opacity
                 "width": 1,  # Outline width
             }
             lc = lc.style(**style)  # Apply the style
@@ -195,13 +195,12 @@ def get_chart_by_layers(layers: List[str]):
 
             # Add the layer to the map. Since we're only visualizing one class, the name doesn't need a year.
             layer_name = f"Urban and Built-up Land Cover {year}"
-            brazil_map = folium.Map(location=[-21.1767, -47.8208], zoom_start=10, height=500)
+            brazil_map = geemap.Map(location=[-21.1767, -47.8208], zoom_start=10, height=500)
             legend_keys.append(layer_name)
             legend_colors.append('ffc0cb')
         brazil_map.add_ee_layer(lc, igb, layer_name)
 
-    brazil_map.add_child(folium.LayerControl())
-    # create dict from legend keys and values
     legend_dict = dict(zip(legend_keys, legend_colors))
     brazil_map.add_legend(title="", legend_dict=legend_dict)
+    brazil_map.add_child(folium.LayerControl())
     return brazil_map._repr_html_()
