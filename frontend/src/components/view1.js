@@ -107,18 +107,18 @@ function View1() {
       </Grid>
       {/* Row 2: for Year Selector Slider */}
       <Grid item xs={12} style={{ height: "15%" }}>
-        <Card style={{ padding: "20px", borderRadius: "20px", height: "100%" }}>
+         <Card style={{ height: '100%', backgroundColor: '#fff', paddingTop: "20px", paddingBottom: "0px", borderRadius: "20px", boxShadow: "0 0 0 0"  }}>
           <Slider
-            padding={2}
-            value={year}
-            onChange={handleYearChange}
-            defaultValue={2010}
-            step={1}
-            min={2010}
-            max={2020}
-            marks={marks}
-            valueLabelDisplay="auto"
-          />
+          value={year}
+          onChange={handleYearChange}
+          defaultValue={2010}
+          step={1}
+          min={2010}
+          max={2020}
+          valueLabelDisplay="off"
+          marks={marks}
+          style={{ width: "90%" }}
+        />
         </Card>
       </Grid>
     </Grid>
